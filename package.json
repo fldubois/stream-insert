@@ -1,0 +1,22 @@
+{
+  "name": "stream-insert",
+  "version": "0.0.0",
+  "description": "Transform stream which insert text into the passing stream",
+  "author": "Florent Dubois <florent.dubois@devaddict.io>",
+  "license": "MIT",
+  "keywords": [
+    "stream",
+    "transform",
+    "insert"
+  ],
+  "bugs": "https://github.com/fldubois/stream-insert/issues",
+  "homepage": "https://github.com/fldubois/stream-insert#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fldubois/stream-insert.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
