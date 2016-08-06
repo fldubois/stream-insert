@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/fldubois/stream-insert.git"
   },
-  "main": "index.js",
+  "main": "lib/stream-insert.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
