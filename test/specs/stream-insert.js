@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 
 var PassThrough = require('stream').PassThrough;
 
-var StreamInsert = require('../lib/stream-insert');
+var StreamInsert = require('../../lib/stream-insert');
 
 function insert(lines, stream, callback) {
   var input  = new PassThrough();
@@ -296,6 +296,18 @@ describe('StreamInsert', function () {
         'Line 2',
         'Line 3'
       ]);
+
+      return done();
+    });
+  });
+
+  it('should accept the separator parameter', function (done) {
+    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, false, ' '), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A B C D E A B C D E');
 
       return done();
     });
