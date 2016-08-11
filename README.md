@@ -19,16 +19,19 @@ fs.createReadStream('input.txt').pipe(insert).pipe(fs.createWriteStream('output.
 ## API
 
 ```js
-StreamInsert(insertions, searches, prepend)
+StreamInsert(insertions, searches, prepend, separator)
 ```
 
-| Parameter    | Type(s)              | Required | Default | Description                                                          |
-| ------------ | -------------------- | -------- | ------- | -------------------------------------------------------------------- |
-| `insertions` | `string`, `string[]` | *Yes*    |         | Lines to insert in the stream.                                       |
-| `searches`   | `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions used to detect where the lines will be inserted. |
-| `prepend`    | `boolean`            | No       | `false` | Insert lines before the last match, after otherwise.                 |
+| Parameter    | Type(s)              | Required | Default | Description                                                                                |
+| ------------ | -------------------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
+| `insertions` | `string`, `string[]` | *Yes*    |         | Lines to insert in the stream.                                                             |
+| `searches`   | `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions used to detect where the lines will be inserted.                       |
+| `prepend`    | `boolean`            | No       | `false` | Insert lines before the last match, after otherwise.                                       |
+| `separator`  | `string`             | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line. |
 
-## Example
+## Examples
+
+### Insert lines into a file
 
 #### _input.txt_
 
@@ -68,4 +71,30 @@ Line X
 Line Y
 Line A
 Line D
+```
+
+### Append words into a sentence
+
+#### _input.txt_
+
+```
+Hello, friend.
+```
+
+#### Code
+
+```js
+var fs = require('fs');
+
+var StreamInsert = require('stream-insert');
+
+var insert = new StreamInsert('old', /friend/, true, ' ');
+
+fs.createReadStream('input.txt').pipe(insert).pipe(fs.createWriteStream('output.txt'));
+```
+
+#### _output.txt_
+
+```
+Hello, old friend.
 ```
