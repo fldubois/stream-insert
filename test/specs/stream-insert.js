@@ -71,7 +71,7 @@ describe('StreamInsert', function () {
       'Line 3'
     ];
 
-    insert(lines, new StreamInsert('Appended line', /^Line 2$/, true), function (error, result) {
+    insert(lines, new StreamInsert('Appended line', /^Line 2$/, {prepend: true}), function (error, result) {
       if (error) {
         return done(error);
       }
@@ -212,7 +212,7 @@ describe('StreamInsert', function () {
       'Line 3'
     ];
 
-    insert(lines, new StreamInsert('Appended line', /^Line 3$/, true), function (error, result) {
+    insert(lines, new StreamInsert('Appended line', /^Line 3$/, {prepend: true}), function (error, result) {
       if (error) {
         return done(error);
       }
@@ -235,7 +235,7 @@ describe('StreamInsert', function () {
       'Line 3'
     ];
 
-    insert(lines, new StreamInsert('Appended line', /\x03/, true), function (error, result) {
+    insert(lines, new StreamInsert('Appended line', /\x03/, {prepend: true}), function (error, result) {
       if (error) {
         return done(error);
       }
@@ -302,7 +302,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the separator parameter', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, false, ' '), function (error, result) {
+    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, {separator: ' '}), function (error, result) {
       if (error) {
         return done(error);
       }

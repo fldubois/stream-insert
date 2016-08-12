@@ -19,15 +19,23 @@ fs.createReadStream('input.txt').pipe(insert).pipe(fs.createWriteStream('output.
 ## API
 
 ```js
-StreamInsert(insertions, searches, prepend, separator)
+StreamInsert(insertions, searches, options)
 ```
+
+##### Parameters
 
 | Parameter    | Type(s)              | Required | Default | Description                                                                                |
 | ------------ | -------------------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
 | `insertions` | `string`, `string[]` | *Yes*    |         | Lines to insert in the stream.                                                             |
 | `searches`   | `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions used to detect where the lines will be inserted.                       |
-| `prepend`    | `boolean`            | No       | `false` | Insert lines before the last match, after otherwise.                                       |
-| `separator`  | `string`             | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line. |
+| `options`    | `object`             | No       | `{}`    | Additional options.                                                                        |
+
+##### Options
+
+| Option       | Type(s)   | Required | Default | Description                                                                                |
+| ------------ | --------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
+| `prepend`    | `boolean` | No       | `false` | Insert lines before the last match, after otherwise.                                       |
+| `separator`  | `string`  | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line. |
 
 ## Examples
 
@@ -88,7 +96,7 @@ var fs = require('fs');
 
 var StreamInsert = require('stream-insert');
 
-var insert = new StreamInsert('old', /friend/, true, ' ');
+var insert = new StreamInsert('old', /friend/, {prepend: true, separator: ' '});
 
 fs.createReadStream('input.txt').pipe(insert).pipe(fs.createWriteStream('output.txt'));
 ```
