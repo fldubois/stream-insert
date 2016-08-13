@@ -301,13 +301,28 @@ describe('StreamInsert', function () {
     });
   });
 
-  it('should accept the separator parameter', function (done) {
+  it('should accept the option separator', function (done) {
     insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, {separator: ' '}), function (error, result) {
       if (error) {
         return done(error);
       }
 
       expect(result).to.equal('A B C D E A B C D E');
+
+      return done();
+    });
+  });
+
+  it('should accept the option insertSeparator', function (done) {
+    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, {
+      separator: ' ',
+      insertSeparator: false
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A B C DE A B C DE');
 
       return done();
     });
