@@ -32,10 +32,12 @@ StreamInsert(insertions, searches, options)
 
 ##### Options
 
-| Option       | Type(s)   | Required | Default | Description                                                                                |
-| ------------ | --------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
-| `prepend`    | `boolean` | No       | `false` | Insert lines before the last match, after otherwise.                                       |
-| `separator`  | `string`  | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line. |
+| Option             | Type(s)   | Required | Default | Description                                                                                               |
+| ------------------ | --------- | -------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| `operator`         | `string`  | No       | `AND`   | If `AND`, insert after all searches are found (sequentially). If `OR`, insert after each matching search. |
+| `prepend`          | `boolean` | No       | `false` | Insert lines before the last match, after otherwise.                                                      |
+| `separator`        | `string`  | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line.                |
+| `insertSeparator`  | `boolean` | No       | `true`  | If `true`, insert the separator between the insert and the matched string.                                |
 
 ## Examples
 

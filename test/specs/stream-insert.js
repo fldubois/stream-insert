@@ -328,4 +328,35 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should accept the OR operator', function (done) {
+    insert(['A B C D A B C D'], new StreamInsert('X', [/^A$/, /^D$/], {
+      operator: 'OR',
+      separator: ' '
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A X B C D X A X B C D X');
+
+      return done();
+    });
+  });
+
+  it('should insert one time with the OR operator', function (done) {
+    insert(['A B C D A B C D'], new StreamInsert('X', [/^(A|C)$/, /^(D|C)$/], {
+      operator: 'OR',
+      prepend: true,
+      separator: ' '
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('X A B X C X D X A B X C X D');
+
+      return done();
+    });
+  });
+
 });
