@@ -38,6 +38,7 @@ StreamInsert(insertions, searches, options)
 | `prepend`          | `boolean` | No       | `false` | Insert lines before the last match, after otherwise.                                                      |
 | `separator`        | `string`  | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line.                |
 | `insertSeparator`  | `boolean` | No       | `true`  | If `true`, insert the separator between the insert and the matched string.                                |
+| `before`           | `RegExp`  | No       | `null`  | Don't insert after this RegExp matched.                                                                   |
 
 ## Examples
 

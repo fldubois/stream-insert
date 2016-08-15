@@ -359,4 +359,19 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should accept the option before', function (done) {
+    insert(['A B C D A B C D'], new StreamInsert('X', /.*/, {
+      separator: ' ',
+      before: /^D$/
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A X B X C X D A B C D');
+
+      return done();
+    });
+  });
+
 });
