@@ -28,6 +28,10 @@ function insert(lines, stream, callback) {
     callback(error);
   });
 
+  if (typeof lines === 'string') {
+    lines = [lines];
+  }
+
   lines.forEach(function (line, index) {
     input.write(line + ((index < lines.length - 1) ? '\n' : ''));
   });
@@ -302,7 +306,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the option separator', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, {separator: ' '}), function (error, result) {
+    insert('A B C D A B C D', new StreamInsert('E', /^D$/, {separator: ' '}), function (error, result) {
       if (error) {
         return done(error);
       }
@@ -314,7 +318,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the option insertSeparator', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('E', /^D$/, {
+    insert('A B C D A B C D', new StreamInsert('E', /^D$/, {
       separator: ' ',
       insertSeparator: false
     }), function (error, result) {
@@ -329,7 +333,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the OR operator', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('X', [/^A$/, /^D$/], {
+    insert('A B C D A B C D', new StreamInsert('X', [/^A$/, /^D$/], {
       operator: 'OR',
       separator: ' '
     }), function (error, result) {
@@ -344,7 +348,7 @@ describe('StreamInsert', function () {
   });
 
   it('should insert one time with the OR operator', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('X', [/^(A|C)$/, /^(D|C)$/], {
+    insert('A B C D A B C D', new StreamInsert('X', [/^(A|C)$/, /^(D|C)$/], {
       operator: 'OR',
       prepend: true,
       separator: ' '
@@ -360,7 +364,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the option before', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('X', /.*/, {
+    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
       separator: ' ',
       before: /^D$/
     }), function (error, result) {
@@ -375,7 +379,7 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the option after', function (done) {
-    insert(['A B C D A B C D'], new StreamInsert('X', /.*/, {
+    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
       separator: ' ',
       after: /^D$/
     }), function (error, result) {
