@@ -43,48 +43,6 @@ StreamInsert(insertions, searches, options)
 
 ## Examples
 
-### Insert lines into a file
-
-#### _input.txt_
-
-```
-Line C
-Line B
-Line A
-Line B
-Line A
-Line D
-```
-
-#### Code
-
-```js
-var fs = require('fs');
-
-var StreamInsert = require('stream-insert');
-
-fs.createReadStream('input.txt').pipe(new StreamInsert([
-  'Line X',
-  'Line Y'
-], [
-  /^Line A$/,
-  /^Line B$/,
-])).pipe(fs.createWriteStream('output.txt'));
-```
-
-#### _output.txt_
-
-```
-Line C
-Line B
-Line A
-Line B
-Line X
-Line Y
-Line A
-Line D
-```
-
 ### Append words into a sentence
 
 #### _input.txt_
