@@ -43,28 +43,5 @@ StreamInsert(insertions, searches, options)
 
 ## Examples
 
-### Append words into a sentence
-
-#### _input.txt_
-
-```
-Hello, friend.
-```
-
-#### Code
-
-```js
-var fs = require('fs');
-
-var StreamInsert = require('stream-insert');
-
-var insert = new StreamInsert('old', /friend/, {prepend: true, separator: ' '});
-
-fs.createReadStream('input.txt').pipe(insert).pipe(fs.createWriteStream('output.txt'));
-```
-
-#### _output.txt_
-
-```
-Hello, old friend.
-```
+* [Insert lines into a file](examples/lines)
+* [Insert words into a sentence](examples/words)
