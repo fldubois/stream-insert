@@ -45,3 +45,4 @@ StreamInsert(insertions, searches, options)
 
 * [Insert lines into a file](examples/lines)
 * [Insert words into a sentence](examples/words)
+* [Insert lines between two boundaries](examples/section)
