@@ -381,13 +381,7 @@
     // enforce the consistent use of either backticks, double, or single quotes
     "quotes": ["error", "single", "avoid-escape"],
     // require JSDoc comments
-    "require-jsdoc": ["warn", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition":    true,
-        "ClassDeclaration":    true
-      }
-    }],
+    "require-jsdoc": "off",
     // require or disallow semicolons instead of ASI
     "semi": ["error", "always"],
     // enforce consistent spacing before and after semicolons
