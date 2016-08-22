@@ -24,11 +24,11 @@ StreamInsert(insertions, searches, options)
 
 ##### Parameters
 
-| Parameter    | Type(s)              | Required | Default | Description                                                                                |
-| ------------ | -------------------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
-| `insertions` | `string`, `string[]` | *Yes*    |         | Lines to insert in the stream.                                                             |
-| `searches`   | `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions used to detect where the lines will be inserted.                       |
-| `options`    | `object`             | No       | `{}`    | Additional options.                                                                        |
+| Parameter    | Type(s)                                    | Required | Default | Description                                                                     |
+| ------------ | ------------------------------------------ | -------- | ------- | ------------------------------------------------------------------------------- |
+| `insertions` | `string`, `string[]`                       | *Yes*    |         | Lines to insert in the stream.                                                  |
+| `searches`   | `string`, `string[]`, `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions or strings used to detect where the lines will be inserted. |
+| `options`    | `object`                                   | No       | `{}`    | Additional options.                                                             |
 
 ##### Options
 

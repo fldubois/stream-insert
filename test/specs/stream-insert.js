@@ -305,6 +305,29 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should accept strings as searches', function (done) {
+    var lines = [
+      'Line A',
+      'Line AA',
+      'Line AAA'
+    ];
+
+    insert(lines, new StreamInsert('Line B', 'Line AA'), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result.split('\n')).to.deep.equal([
+        'Line A',
+        'Line AA',
+        'Line B',
+        'Line AAA'
+      ]);
+
+      return done();
+    });
+  });
+
   it('should accept the option separator', function (done) {
     insert('A B C D A B C D', new StreamInsert('E', /^D$/, {separator: ' '}), function (error, result) {
       if (error) {
