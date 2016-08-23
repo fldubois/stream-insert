@@ -401,6 +401,21 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should accept string for the option before', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
+      separator: ' ',
+      before: 'C'
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A X B X C D A B C D');
+
+      return done();
+    });
+  });
+
   it('should accept the option after', function (done) {
     insert('A B C D A B C D', new StreamInsert('X', /.*/, {
       separator: ' ',
@@ -411,6 +426,21 @@ describe('StreamInsert', function () {
       }
 
       expect(result).to.equal('A B C D A X B X C X D X');
+
+      return done();
+    });
+  });
+
+  it('should accept string for the option after', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
+      separator: ' ',
+      after: 'B'
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A B C X D X A X B X C X D X');
 
       return done();
     });
