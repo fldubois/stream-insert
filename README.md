@@ -24,18 +24,18 @@ StreamInsert(insertions, searches, options)
 
 ##### Parameters
 
-| Parameter    | Type(s)                                    | Required | Default | Description                                                                     |
-| ------------ | ------------------------------------------ | -------- | ------- | ------------------------------------------------------------------------------- |
-| `insertions` | `string`, `string[]`                       | *Yes*    |         | Lines to insert in the stream.                                                  |
-| `searches`   | `string`, `string[]`, `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions or strings used to detect where the lines will be inserted. |
-| `options`    | `object`                                   | No       | `{}`    | Additional options.                                                             |
+| Parameter    | Type(s)                                    | Required | Default | Description                                                                       |
+| ------------ | ------------------------------------------ | -------- | ------- | --------------------------------------------------------------------------------- |
+| `insertions` | `string`, `string[]`                       | *Yes*    |         | Strings to insert into the stream.                                                |
+| `searches`   | `string`, `string[]`, `RegExp`, `RegExp[]` | *Yes*    |         | Regular expressions or strings used to detect where the strings will be inserted. |
+| `options`    | `object`                                   | No       | `{}`    | Additional options.                                                               |
 
 ##### Options
 
 | Option             | Type(s)            | Required | Default | Description                                                                                               |
 | ------------------ | ------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------------- |
 | `operator`         | `string`           | No       | `AND`   | If `AND`, insert after all searches are found (sequentially). If `OR`, insert after each matching search. |
-| `prepend`          | `boolean`          | No       | `false` | Insert lines before the last match, after otherwise.                                                      |
+| `prepend`          | `boolean`          | No       | `false` | Insert strings before the last match, after otherwise.                                                    |
 | `separator`        | `string`           | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line.                |
 | `before`           | `RegExp`, `string` | No       | `null`  | Don't insert after this RegExp matched.                                                                   |
 | `after`            | `RegExp`, `string` | No       | `null`  | Don't insert until this RegExp matched.                                                                   |
