@@ -239,7 +239,7 @@ describe('StreamInsert', function () {
       'Line 3'
     ];
 
-    insert(lines, new StreamInsert('Appended line', /\x03/, {prepend: true}), function (error, result) {
+    insert(lines, new StreamInsert('Appended line', StreamInsert.EOF, {prepend: true}), function (error, result) {
       if (error) {
         return done(error);
       }
@@ -288,7 +288,7 @@ describe('StreamInsert', function () {
     ];
 
     insert(lines, new StreamInsert('Appended line', [
-      /\x03/,
+      StreamInsert.EOF,
       /foo/
     ]), function (error, result) {
       if (error) {
