@@ -357,7 +357,7 @@ describe('StreamInsert', function () {
 
   it('should accept the OR operator', function (done) {
     insert('A B C D A B C D', new StreamInsert('X', [/^A$/, /^D$/], {
-      operator: 'OR',
+      operator: StreamInsert.OR,
       separator: ' '
     }), function (error, result) {
       if (error) {
@@ -372,7 +372,7 @@ describe('StreamInsert', function () {
 
   it('should insert one time with the OR operator', function (done) {
     insert('A B C D A B C D', new StreamInsert('X', [/^(A|C)$/, /^(D|C)$/], {
-      operator: 'OR',
+      operator: StreamInsert.OR,
       prepend: true,
       separator: ' '
     }), function (error, result) {
