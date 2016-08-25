@@ -446,4 +446,19 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should accept the option limit', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
+      separator: ' ',
+      limit: 4
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A X B X C X D X A B C D');
+
+      return done();
+    });
+  });
+
 });

@@ -39,6 +39,7 @@ StreamInsert(insertions, searches, options)
 | `separator`        | `string`           | No       | `\n`    | Separator used to split the stream. Default to `\n` to read the input stream line by line.                |
 | `before`           | `RegExp`, `string` | No       | `null`  | Don't insert after this RegExp matched.                                                                   |
 | `after`            | `RegExp`, `string` | No       | `null`  | Don't insert until this RegExp matched.                                                                   |
+| `limit`            | `number`           | No       | `-1`    | Maximum number of insertions (-1 for infinity).                                                           |
 | `insertSeparator`  | `boolean`          | No       | `true`  | If `true`, insert the separator between the insert and the matched string.                                |
 
 ## Examples
