@@ -356,8 +356,10 @@ describe('StreamInsert', function () {
   });
 
   it('should accept the OR operator', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', [/^A$/, /^D$/], {
-      operator: StreamInsert.OR,
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: [/^A$/, /^D$/],
+      operator: StreamInsert.OR
+    }, {
       separator: ' '
     }), function (error, result) {
       if (error) {
@@ -371,8 +373,10 @@ describe('StreamInsert', function () {
   });
 
   it('should insert one time with the OR operator', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', [/^(A|C)$/, /^(D|C)$/], {
-      operator: StreamInsert.OR,
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: [/^(A|C)$/, /^(D|C)$/],
+      operator: StreamInsert.OR
+    }, {
       prepend: true,
       separator: ' '
     }), function (error, result) {
@@ -386,10 +390,12 @@ describe('StreamInsert', function () {
     });
   });
 
-  it('should accept the option before', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
-      separator: ' ',
+  it('should accept the filter before as a RegExp', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: /.*/,
       before: /^D$/
+    }, {
+      separator: ' '
     }), function (error, result) {
       if (error) {
         return done(error);
@@ -401,10 +407,12 @@ describe('StreamInsert', function () {
     });
   });
 
-  it('should accept string for the option before', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
-      separator: ' ',
+  it('should accept the filter before as a string', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: /.*/,
       before: 'C'
+    }, {
+      separator: ' '
     }), function (error, result) {
       if (error) {
         return done(error);
@@ -416,10 +424,12 @@ describe('StreamInsert', function () {
     });
   });
 
-  it('should accept the option after', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
-      separator: ' ',
+  it('should accept the filter after as a RegExp', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: /.*/,
       after: /^D$/
+    }, {
+      separator: ' '
     }), function (error, result) {
       if (error) {
         return done(error);
@@ -431,10 +441,12 @@ describe('StreamInsert', function () {
     });
   });
 
-  it('should accept string for the option after', function (done) {
-    insert('A B C D A B C D', new StreamInsert('X', /.*/, {
-      separator: ' ',
+  it('should accept the filter after as a string', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: /.*/,
       after: 'B'
+    }, {
+      separator: ' '
     }), function (error, result) {
       if (error) {
         return done(error);
