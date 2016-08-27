@@ -28,7 +28,7 @@ StreamInsert(insertions, query, options)
 | ------------ | ---------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------- |
 | `insertions` | `string`, `string[]`                                 | *Yes*    |         | Strings to insert into the stream.                                                                 |
 | `query`      | `object`, `string`, `string[]`, `RegExp`, `RegExp[]` | *Yes*    |         | Query object (see below) or RegExp(s)/string(s) used to detect where the strings will be inserted. |
-| `options`    | `object`                                             | No       | `{}`    | Additional options.                                                                                |
+| `options`    | `object`, `string`                                   | No       | `{}`    | Additional options. If a string is passed, set the separator option.                               |
 
 ##### Query
 
