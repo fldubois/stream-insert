@@ -42,7 +42,33 @@ function insert(lines, stream, callback) {
 describe('StreamInsert', function () {
 
   it('should always create a StreamInsert instance', function () {
-    expect(StreamInsert.apply({})).to.be.an.instanceof(StreamInsert);
+    expect(new StreamInsert('A', 'B')).to.be.an.instanceof(StreamInsert);
+    expect(StreamInsert.call({}, 'A', 'B')).to.be.an.instanceof(StreamInsert);
+    expect(StreamInsert('A', 'B')).to.be.an.instanceof(StreamInsert);
+  });
+
+  it('should throw a TypeError for bad `insertions` type', function () {
+    [undefined, null, 1, true, {}].forEach(function (insertions) {
+      expect(function () {
+        return new StreamInsert(insertions, '');
+      }).to.throw(TypeError);
+    });
+  });
+
+  it('should throw a TypeError for bad `query` type', function () {
+    [undefined, null, 1, true].forEach(function (query) {
+      expect(function () {
+        return new StreamInsert('', query);
+      }).to.throw(TypeError);
+    });
+  });
+
+  it('should throw a TypeError for bad `options` type', function () {
+    [null, 1, true, []].forEach(function (options) {
+      expect(function () {
+        return new StreamInsert('', {}, options);
+      }).to.throw(TypeError);
+    });
   });
 
   it('should append the insertion after search', function (done) {

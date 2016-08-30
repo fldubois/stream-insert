@@ -21,7 +21,8 @@
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive test/specs"
   },
   "dependencies": {
-    "merge": "^1.2.0"
+    "merge": "^1.2.0",
+    "yatc": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

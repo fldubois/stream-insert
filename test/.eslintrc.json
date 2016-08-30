@@ -38,6 +38,9 @@
     // enforce a maximum depth that callbacks can be nested
     "max-nested-callbacks": ["error", 5],
 
+    // require constructor function names to begin with a capital letter
+    "new-cap": ["error", {"capIsNewExceptions": ["StreamInsert"]}],
+
     // require or disallow padding within blocks
     "padded-blocks": "off",
 
