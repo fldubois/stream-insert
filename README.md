@@ -1,5 +1,9 @@
 # stream-insert
 
+[![Build Status](https://travis-ci.org/fldubois/stream-insert.svg?branch=master)](https://travis-ci.org/fldubois/stream-insert)
+[![dependencies Status](https://david-dm.org/fldubois/stream-insert/status.svg)](https://david-dm.org/fldubois/stream-insert)
+[![devDependencies Status](https://david-dm.org/fldubois/stream-insert/dev-status.svg)](https://david-dm.org/fldubois/stream-insert?type=dev)
+
 > Transform stream which insert text into the passing stream
 
 ## Usage
