@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.0] - 2016-09-09
+
 ### Added
 - Initial implementation
 - `AND` & `OR` query operators
