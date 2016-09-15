@@ -1,5 +1,6 @@
 # stream-insert
 
+[![npm](https://img.shields.io/npm/v/stream-insert.svg?maxAge=3600)](https://www.npmjs.com/package/stream-insert)
 [![Build Status](https://travis-ci.org/fldubois/stream-insert.svg?branch=master)](https://travis-ci.org/fldubois/stream-insert)
 [![Coverage Status](https://coveralls.io/repos/github/fldubois/stream-insert/badge.svg?branch=master)](https://coveralls.io/github/fldubois/stream-insert?branch=master)
 [![dependencies Status](https://david-dm.org/fldubois/stream-insert/status.svg)](https://david-dm.org/fldubois/stream-insert)
