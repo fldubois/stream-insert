@@ -496,6 +496,25 @@ describe('StreamInsert', function () {
     });
   });
 
+  it('should check boundaries on loose mode', function (done) {
+    insert('A B C D A B C D', new StreamInsert('X', {
+      searches: /.*/,
+      after: 'B',
+      before: 'C',
+      strict: false
+    }, {
+      separator: ' '
+    }), function (error, result) {
+      if (error) {
+        return done(error);
+      }
+
+      expect(result).to.equal('A B X C X D A B X C X D');
+
+      return done();
+    });
+  });
+
   it('should accept the option limit', function (done) {
     insert('A B C D A B C D', new StreamInsert('X', /.*/, {
       separator: ' ',

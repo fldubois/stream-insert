@@ -43,6 +43,7 @@ StreamInsert(insertions, query, options)
 | `operator`         | `string`                                   | No       | `AND`   | If `AND`, insert after all searches are found (sequentially). If `OR`, insert after each matching search. |
 | `before`           | `RegExp`, `string`                         | No       | `null`  | Don't insert after this RegExp matched.                                                                   |
 | `after`            | `RegExp`, `string`                         | No       | `null`  | Don't insert until this RegExp matched.                                                                   |
+| `strict`           | `boolean`                                  | No       | `true`  | In strict mode, boudaries (before & after) are not tested against searches.                               |
 
 ##### Options
 

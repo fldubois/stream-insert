@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `strict` query option
+
 ## [1.0.0] - 2016-09-09
 
 ### Added
